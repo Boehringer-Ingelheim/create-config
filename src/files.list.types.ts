@@ -1,5 +1,5 @@
-export type ConfigFile = {
+export interface ConfigFile {
   formName: string;
   fileName: string;
   targetPath: string;
-};
+}

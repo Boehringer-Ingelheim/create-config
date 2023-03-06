@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unused-modules */
+// eslint-disable-next-line import/no-named-as-default
 import prompts from "prompts";
 import { files } from "./files.list";
 
@@ -9,22 +11,25 @@ async function init() {
   try {
     result = await prompts([
       {
-        type: "multiselect",
-        name: "files",
-        message: "Choose config files",
         // choices: [{title: '.editorconfig', value: 'editorconfig'}, {title: 'vscode settings.json', value: 'vscode-settings'}]
         choices: files.map((f) => ({ title: f.formName, value: f.fileName })),
+
+        message: "Choose config files",
+
+        name: "files",
+
+        type: "multiselect",
       },
       {
-        type: "text",
-        name: "location",
         initial: ".",
         message: "Where to put them (filepath)",
+        name: "location",
+        type: "text",
       },
       {
-        type: "confirm",
-        name: "overwrite",
         message: "Overwrite existing files?",
+        name: "overwrite",
+        type: "confirm",
       },
     ]);
   } catch (err) {

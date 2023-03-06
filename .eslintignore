@@ -1,0 +1,4 @@
+.eslint*
+dist/
+node_modules/
+index.js

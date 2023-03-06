@@ -4,7 +4,4 @@ module.exports = {
     // NOTE: Prettier has to be the last one to work
     "prettier",
   ],
-  rules: {
-    indent: "warn",
-  },
 };
