@@ -1,5 +1,5 @@
 export type ConfigFile = {
-  formName: string
-  fileName: string
-  targetPath: string
-}
+  formName: string;
+  fileName: string;
+  targetPath: string;
+};
