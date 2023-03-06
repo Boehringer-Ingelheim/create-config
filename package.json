@@ -17,13 +17,16 @@
     "dist"
   ],
   "scripts": {
-    "dev": "unbuild --stub",
+    "dev": "unbuild --stub; node index.js",
+    "dev:watch": "yarn dev; chokidar 'src/**/*.ts' -c 'node index.js --retries=0'",
     "build": "unbuild"
   },
   "engines": {
     "node": ">=16.0.0"
   },
   "devDependencies": {
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
     "unbuild": "^1.1.2"
   }
 }
