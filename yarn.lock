@@ -196,6 +196,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@boehringer-ingelheim/prettier-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@boehringer-ingelheim/prettier-config/-/prettier-config-1.0.0.tgz#c87bce1ce660b404732d2dfd0bfbff6a27734df0"
+  integrity sha512-kjX8VhnpVKZor+XrwBweqZV1BZ/0STOBja55DA1HbSAa2ASBSlgutcJxqHhpEZY558jhij3+k6kZAbfdg0KRlg==
+
 "@esbuild/android-arm64@0.17.11":
   version "0.17.11"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.17.11.tgz#52c3e6cabc19c5e4c1c0c01cb58f0442338e1c14"
@@ -1076,6 +1081,11 @@ pkg-types@^1.0.1, pkg-types@^1.0.2:
     jsonc-parser "^3.2.0"
     mlly "^1.1.1"
     pathe "^1.1.0"
+
+prettier@^2.8.4:
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.4.tgz#34dd2595629bfbb79d344ac4a91ff948694463c3"
+  integrity sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==
 
 pretty-bytes@^6.1.0:
   version "6.1.0"
