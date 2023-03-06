@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-unused-modules */
 // eslint-disable-next-line import/no-named-as-default
 import prompts from "prompts";
@@ -13,11 +14,8 @@ async function init() {
       {
         // choices: [{title: '.editorconfig', value: 'editorconfig'}, {title: 'vscode settings.json', value: 'vscode-settings'}]
         choices: files.map((f) => ({ title: f.formName, value: f.fileName })),
-
         message: "Choose config files",
-
         name: "files",
-
         type: "multiselect",
       },
       {
@@ -38,10 +36,13 @@ async function init() {
   }
 
   console.log(result);
+
+  // TODO: Check if overwrite is true
+  // TODO: For each file write to filesystem
 }
 
 function welcomeUser() {
-  console.log("\nWelcome to shared configs of Boehringer Ingelheim!\n");
+  console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
 }
 
 init().catch((e) => console.error(e));

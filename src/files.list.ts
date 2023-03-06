@@ -9,6 +9,16 @@ export const files: ConfigFile[] = [
   {
     fileName: "settings.json",
     formName: "settings.json (VSCode)",
-    targetPath: ".vscode/settings.json",
+    targetPath: ".vscode/",
+  },
+  {
+    fileName: ".eslintrc.cjs",
+    formName: "eslintrc.cjs",
+    targetPath: ".",
+  },
+  {
+    fileName: ".prettierrc.cjs",
+    formName: "prettierrc.cjs",
+    targetPath: ".",
   },
 ];
