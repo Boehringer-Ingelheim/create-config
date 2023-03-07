@@ -9,8 +9,10 @@ export function welcomeUser() {
   console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
 }
 
-function getTo(targetRootPath: string, targetFolder: string, fileName: string) {
-  return `${targetRootPath}/${targetFolder}/${fileName}`;
+function getTo(targetRootPath: string, targetFolder: string, fileName?: string) {
+  const folder = `${targetRootPath}/${targetFolder}`;
+  const file = fileName ? `/${fileName}` : "";
+  return folder + file;
 }
 
 export function doesFileExist(file: ConfigFile, location: string) {
@@ -20,9 +22,13 @@ export function doesFileExist(file: ConfigFile, location: string) {
 
 export function copyFile(filesLocation: string, file: ConfigFile, location: string) {
   const from = `${filesLocation}/${file.name}`;
+  const toFolder = getTo(location, file.targetFolder);
   const to = getTo(location, file.targetFolder, file.name);
 
   try {
+    if (!fs.existsSync(toFolder)) {
+      fs.mkdirSync(toFolder, { recursive: true });
+    }
     fs.copyFileSync(from, to);
   } catch (err) {
     console.warn(err);
