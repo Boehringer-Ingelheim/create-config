@@ -18,8 +18,8 @@ export function doesFileExist(file: ConfigFile, location: string) {
   return fs.existsSync(to);
 }
 
-export function copyFile(file: ConfigFile, location: string) {
-  const from = `./files/${file.name}`;
+export function copyFile(filesLocation: string, file: ConfigFile, location: string) {
+  const from = `${filesLocation}/${file.name}`;
   const to = getTo(location, file.targetFolder, file.name);
 
   try {
