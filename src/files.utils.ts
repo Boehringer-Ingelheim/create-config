@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 
+import { exec } from "node:child_process";
 import fs from "node:fs";
 
-import { sync } from "cross-spawn";
 import { ConfigFile, ConfigPackage } from "./files.list.types";
 
 export function welcomeUser() {
@@ -47,19 +47,25 @@ export function pkgFromUserAgent(userAgent: string | undefined) {
   };
 }
 
-function installPackage(baseCmd: string, packs: string[], suffix: string) {
-  packs.forEach((p) => {
-    const cmd = `${baseCmd} ${p} ${suffix}`;
+function installPackage(baseCmd: string, packs: ConfigPackage[], suffix: string) {
+  const toInstall = bulkifyPackages(packs);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-    const { status } = sync(cmd, {
-      stdio: "inherit",
-    });
+  // Install all packages at once
+  const cmd = `${baseCmd} ${toInstall} ${suffix}`;
 
-    if (typeof status === "number") {
-      console.log(`Installing package "${p}" finished with status "${status}"`);
+  exec(cmd, (err, stdout, stderr) => {
+    if (err) {
+      console.warn(err.message);
     }
+    if (stderr) {
+      console.warn(stderr);
+    }
+    console.log(stdout);
   });
+}
+
+function bulkifyPackages(packages: ConfigPackage[]): string {
+  return packages.map((p) => p.packages.join(" ")).join(" ");
 }
 
 export function installSharedPackages(packageManager: string, packages: ConfigPackage[]) {
@@ -67,20 +73,12 @@ export function installSharedPackages(packageManager: string, packages: ConfigPa
 
   switch (packageManager) {
     case "npm":
-      packages.forEach((p) => {
-        // Install packages
-        console.log(`Installing packages with npm`);
-
-        installPackage("npm install", p.packages, "-D");
-      });
+      console.log(`Installing packages with npm`);
+      installPackage("npm install", packages, "-D");
       break;
     case "yarn":
-      packages.forEach((p) => {
-        // Install packages
-        console.log(`Installing packages with yarn`);
-
-        installPackage(`yarn add`, p.packages, "-D");
-      });
+      console.log(`Installing packages with yarn`);
+      installPackage("yarn add", packages, "-D");
       break;
 
     default:
