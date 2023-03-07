@@ -14,7 +14,9 @@
     }
   },
   "files": [
-    "dist"
+    "index.js",
+    "dist",
+    "files"
   ],
   "scripts": {
     "dev": "node index.js",
