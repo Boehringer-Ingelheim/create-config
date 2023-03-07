@@ -30,6 +30,8 @@
   "devDependencies": {
     "@boehringer-ingelheim/eslint-config": "^1.1.0",
     "@boehringer-ingelheim/prettier-config": "^1.0.0",
+    "@types/cross-spawn": "^6.0.2",
+    "@types/node": "^16.14.2",
     "@types/prompts": "^2.4.2",
     "chokidar": "^3.5.3",
     "chokidar-cli": "^3.0.0",

@@ -1,24 +1,24 @@
 import { ConfigFile } from "./files.list.types";
 
-export const files: ConfigFile[] = [
+export const configFileDict: ConfigFile[] = [
   {
-    fileName: ".editorconfig",
     formName: "editorconfig",
-    targetPath: ".",
+    name: ".editorconfig",
+    targetFolder: ".",
   },
   {
-    fileName: "settings.json",
     formName: "settings.json (VSCode)",
-    targetPath: ".vscode/",
+    name: "settings.json",
+    targetFolder: ".vscode",
   },
   {
-    fileName: ".eslintrc.cjs",
     formName: "eslintrc.cjs",
-    targetPath: ".",
+    name: ".eslintrc.cjs",
+    targetFolder: ".",
   },
   {
-    fileName: ".prettierrc.cjs",
     formName: "prettierrc.cjs",
-    targetPath: ".",
+    name: ".prettierrc.cjs",
+    targetFolder: ".",
   },
 ];
