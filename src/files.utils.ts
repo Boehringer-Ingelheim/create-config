@@ -9,6 +9,10 @@ export function welcomeUser() {
   console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
 }
 
+export function sayGoodbye() {
+  console.log("\nThank you for using shared configuration files of Boehringer Ingelheim!\n");
+}
+
 function getTo(targetRootPath: string, targetFolder: string, fileName?: string) {
   const folder = `${targetRootPath}/${targetFolder}`;
   const file = fileName ? `/${fileName}` : "";

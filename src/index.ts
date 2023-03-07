@@ -6,8 +6,15 @@ import { fileURLToPath } from "node:url";
 // eslint-disable-next-line import/no-named-as-default
 import prompts from "prompts";
 import { configFileDict } from "./files.list";
-import { AnswersType, ExpectedResult } from "./files.list.types";
-import { copyFile, doesFileExist, installSharedPackages, pkgFromUserAgent, welcomeUser } from "./files.utils";
+import { AnswersType, ConfigFile, ConfigPackage, ExpectedResult } from "./files.list.types";
+import {
+  copyFile,
+  doesFileExist,
+  installSharedPackages,
+  pkgFromUserAgent,
+  sayGoodbye,
+  welcomeUser,
+} from "./files.utils";
 import { packageFileDict } from "./packages.list";
 
 const cwd = process.cwd();
@@ -17,8 +24,7 @@ async function init() {
 
   welcomeUser();
 
-  console.log("url:", import.meta.url);
-
+  // PROMPTS
   try {
     result = await prompts(
       [
@@ -32,12 +38,12 @@ async function init() {
           initial: ".",
           message: "Where to put them (filepath)",
           name: "location",
-          type: "text",
+          type: (prev: ConfigFile[]) => (prev.length ? "text" : null),
         },
         {
           message: "Overwrite existing files?",
           name: "overwrite",
-          type: "confirm",
+          type: (prev: string) => (prev.length ? "confirm" : null),
         },
         {
           choices: packageFileDict.map((p) => ({ title: p.formName, value: p })),
@@ -61,17 +67,29 @@ async function init() {
     return;
   }
 
-  // console.log(result);
-
+  // Destructure results of prompts
   const { overwrite, files, location, packages } = result as ExpectedResult;
 
+  const filesChosen = files.length > 0;
+  const packagesChosen = packages.length > 0;
+
+  if (filesChosen) {
+    processFiles(location, overwrite, files);
+  }
+
+  if (packagesChosen) {
+    processPackages(packages);
+  }
+
+  sayGoodbye();
+}
+
+function processFiles(location: string, overwrite: boolean, files: ConfigFile[]) {
+  // Get location of create-bi-config and files directory
   const filesLocation = path.resolve(fileURLToPath(import.meta.url), "../..", "files");
 
+  // Get path where create command was called from
   const targetRootPath = path.join(cwd, location);
-
-  if (!(files instanceof Array)) {
-    return;
-  }
 
   // Check if overwrite is true
   if (overwrite) {
@@ -88,7 +106,9 @@ async function init() {
       copyFile(filesLocation, file, targetRootPath);
     });
   }
+}
 
+function processPackages(packages: ConfigPackage[]) {
   // Get which package manager
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent);
   const pkgManager = pkgInfo ? pkgInfo.name : "npm";
