@@ -13,5 +13,10 @@ export interface ExpectedResult {
   overwrite: boolean;
   files: ConfigFile[];
   location: string;
+  packages: ConfigPackage[];
+}
+
+export interface ConfigPackage {
+  formName: string;
   packages: string[];
 }

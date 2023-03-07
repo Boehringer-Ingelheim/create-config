@@ -36,7 +36,7 @@ async function init() {
         type: "confirm",
       },
       {
-        choices: packageFileDict.map((p) => ({ title: p, value: p })),
+        choices: packageFileDict.map((p) => ({ title: p.formName, value: p })),
         message: "Choose packages to install",
         name: "packages",
         type: "multiselect",

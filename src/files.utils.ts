@@ -3,7 +3,7 @@
 import fs from "node:fs";
 
 import { sync } from "cross-spawn";
-import { ConfigFile } from "./files.list.types";
+import { ConfigFile, ConfigPackage } from "./files.list.types";
 
 export function welcomeUser() {
   console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
@@ -41,35 +41,39 @@ export function pkgFromUserAgent(userAgent: string | undefined) {
   };
 }
 
-function installPackage(cmd: string, pack: string) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-  const { status } = sync(cmd, {
-    stdio: "inherit",
-  });
+function installPackage(baseCmd: string, packs: string[], suffix: string) {
+  packs.forEach((p) => {
+    const cmd = `${baseCmd} ${p} ${suffix}`;
 
-  if (typeof status === "number") {
-    console.log(`Installing package "${pack}" finished with status "${status}"`);
-  }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+    const { status } = sync(cmd, {
+      stdio: "inherit",
+    });
+
+    if (typeof status === "number") {
+      console.log(`Installing package "${p}" finished with status "${status}"`);
+    }
+  });
 }
 
-export function installSharedPackages(packageManager: string, packages: string[]) {
+export function installSharedPackages(packageManager: string, packages: ConfigPackage[]) {
   console.log("Installing your packages now ...");
 
   switch (packageManager) {
     case "npm":
       packages.forEach((p) => {
-        // Install package
-        console.log(`Installing "${p}" with npm`);
+        // Install packages
+        console.log(`Installing packages with npm`);
 
-        installPackage(`npm install ${p} -D`, p);
+        installPackage("npm install", p.packages, "-D");
       });
       break;
     case "yarn":
       packages.forEach((p) => {
-        // Install package
-        console.log(`Installing "${p}" with yarn`);
+        // Install packages
+        console.log(`Installing packages with yarn`);
 
-        installPackage(`yarn add ${p} -D`, p);
+        installPackage(`yarn add`, p.packages, "-D");
       });
       break;
 
