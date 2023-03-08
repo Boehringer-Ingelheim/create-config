@@ -57,6 +57,8 @@ function installPackage(baseCmd: string, packs: ConfigPackage[], suffix: string)
   // Install all packages at once
   const cmd = `${baseCmd} ${toInstall} ${suffix}`;
 
+  console.log(`Running command: ${cmd}`);
+
   exec(cmd, (err, stdout, stderr) => {
     if (err) {
       console.warn(err.message);
