@@ -38,7 +38,7 @@
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "eslint --fix .",
-    "semantic-release": "semantic-release",
+    "release": "semantic-release",
     "postinstall": "husky install"
   },
   "engines": {
