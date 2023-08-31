@@ -8,7 +8,7 @@ Please also check out other projects that deal with shared configurations such a
 
 [![Boehringer Ingelheim](https://boehringer-ingelheim.com/sites/default/files/2021-10/logo-primary-contrast.svg)](https://www.boehringer-ingelheim.com)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://github.com/boehringer-ingelheim/shared-configs/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://github.com/boehringer-ingelheim/shared-configs/blob/main/LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://github.com/boehringer-ingelheim/shared-configs/graphs/commit-activity)
 
 ## Prerequisites
@@ -54,7 +54,7 @@ Give a ⭐️ if this project helped you!
 ## License
 
 Copyright © 2022 [Boehringer Ingelheim](https://github.com/boehringer-ingelheim).  
-This project is [MIT](https://github.com/boehringer-ingelheim/create-bi-config/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/boehringer-ingelheim/create-bi-config/blob/main/LICENSE) licensed.
 
 ## Resources
 
