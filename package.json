@@ -40,6 +40,7 @@
     "lint": "DEBUG=eslint:cli-engine eslint --fix .",
     "prerelease": "yarn build",
     "release": "dotenv -- semantic-release --no-ci",
+    "prerelease:ci": "yarn build",
     "release:ci": "semantic-release",
     "prepare": "husky install"
   },
