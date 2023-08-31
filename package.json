@@ -38,9 +38,10 @@
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "DEBUG=eslint:cli-engine eslint --fix .",
+    "prerelease": "yarn build",
     "release": "dotenv -- semantic-release --no-ci",
     "release:ci": "semantic-release",
-    "postinstall": "husky install"
+    "prepare": "husky install"
   },
   "engines": {
     "node": ">=18.0.0"
