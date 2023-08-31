@@ -1,6 +1,6 @@
-/* eslint-disable import/no-unused-modules */
-// unbuild configuration
+import { defineBuildConfig } from "unbuild";
 
-export default {
-  entries: ["./src/index"],
-};
+// unbuild configuration
+export default defineBuildConfig({
+  // Space for custom build configuration
+});

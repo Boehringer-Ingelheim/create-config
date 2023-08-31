@@ -119,3 +119,7 @@ function processPackages(packages: ConfigPackage[]) {
 }
 
 init().catch((e) => console.error(e));
+
+// TODO: Configure semantic release properly
+// TODO: Configure commit lint
+// TODO: Configure npm publishing

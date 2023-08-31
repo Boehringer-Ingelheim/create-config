@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+      - next
+
+jobs:
+  release:
+    env:
+      # Disable husky (git hooks) in CI, see: https://typicode.github.io/husky/guide.html#with-env-variables
+      HUSKY: 0
+    name: Release
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+          registry-url: https://registry.npmjs.org/
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Release package to npm and GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn release:ci
