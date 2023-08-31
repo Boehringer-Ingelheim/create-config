@@ -38,7 +38,8 @@
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "eslint --fix .",
-    "release": "semantic-release",
+    "release": "dotenv -- semantic-release --no-ci",
+    "release:ci": "semantic-release",
     "postinstall": "husky install"
   },
   "engines": {
@@ -57,6 +58,7 @@
     "@types/prompts": "^2.4.4",
     "chokidar": "^3.5.3",
     "chokidar-cli": "^3.0.0",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "husky": "^8.0.3",
