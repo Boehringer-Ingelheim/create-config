@@ -1,0 +1,80 @@
+{
+  "name": "@boehringer-ingelheim/create-config",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "author": "Boehringer Ingelheim",
+  "description": "Add shared configs to your project.",
+  "keywords": [
+    "boehringer",
+    "boehringer-ingelheim",
+    "configuration",
+    "editorconfig",
+    "prettier",
+    "prettierrc",
+    "prettier-config",
+    "eslint",
+    "eslintrc",
+    "eslint-config"
+  ],
+  "homepage": "https://github.com/boehringer-ingelheim/create-config.git",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "index.js",
+    "dist",
+    "files"
+  ],
+  "scripts": {
+    "dev": "node index.js",
+    "dev:prepare": "unbuild --stub",
+    "dev:watch": "yarn dev; chokidar 'src/**/*.ts' -c 'yarn dev --retries=0'",
+    "build": "unbuild",
+    "prettier": "prettier --write --ignore-unknown .",
+    "lint": "DEBUG=eslint:cli-engine eslint --fix .",
+    "release": "dotenv -- semantic-release --no-ci",
+    "release:ci": "semantic-release",
+    "postinstall": "husky install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@boehringer-ingelheim/eslint-config": "^1.1.4",
+    "@boehringer-ingelheim/prettier-config": "^1.0.0",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/types": "^17.4.4",
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@types/cross-spawn": "^6.0.2",
+    "@types/node": "^20.5.7",
+    "@types/prompts": "^2.4.4",
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3",
+    "semantic-release": "21.0.9",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boehringer-ingelheim/create-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boehringer-ingelheim/create-config/issues"
+  }
+}
