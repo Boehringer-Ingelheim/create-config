@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/boehringer-ingelheim/create-config/compare/v1.0.1...v1.0.2) (2023-09-01)
+
+
+### Bug Fixes
+
+* added bin for create-config ([87ad889](https://github.com/boehringer-ingelheim/create-config/commit/87ad88907a510ffabfcd7154a447c98977c08b07))
+
 ## [1.0.1](https://github.com/boehringer-ingelheim/create-config/compare/v1.0.0...v1.0.1) (2023-08-31)
 
 
