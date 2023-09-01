@@ -31,6 +31,9 @@
     "dist",
     "files"
   ],
+  "bin": {
+    "create-config": "index.js"
+  },
   "scripts": {
     "dev": "node index.js",
     "dev:prepare": "unbuild --stub",
