@@ -36,8 +36,9 @@
   },
   "scripts": {
     "dev": "node index.js",
-    "dev:prepare": "unbuild --stub",
-    "dev:watch": "npm run dev; chokidar 'src/**/*.ts' -c 'npm run dev --retries=0'",
+    "predev": "unbuild --stub",
+    "dev:watch": "chokidar 'src/**/*.ts' -c 'npm run dev --retries=0'",
+    "predev:watch": "unbuild --stub",
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "DEBUG=eslint:cli-engine eslint --fix .",
