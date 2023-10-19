@@ -37,13 +37,13 @@
   "scripts": {
     "dev": "node index.js",
     "dev:prepare": "unbuild --stub",
-    "dev:watch": "yarn dev; chokidar 'src/**/*.ts' -c 'yarn dev --retries=0'",
+    "dev:watch": "npm run dev; chokidar 'src/**/*.ts' -c 'npm run dev --retries=0'",
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "DEBUG=eslint:cli-engine eslint --fix .",
-    "prerelease": "yarn build",
+    "prerelease": "npm run build",
     "release": "dotenv -- semantic-release --no-ci",
-    "prerelease:ci": "yarn build",
+    "prerelease:ci": "npm run build",
     "release:ci": "semantic-release",
     "prepare": "husky install"
   },
