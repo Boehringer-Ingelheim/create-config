@@ -47,32 +47,32 @@
     "release": "dotenv -- semantic-release --no-ci",
     "prerelease:ci": "npm run build",
     "release:ci": "semantic-release",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "devDependencies": {
     "@boehringer-ingelheim/eslint-config": "^1.1.4",
-    "@boehringer-ingelheim/prettier-config": "^1.0.0",
-    "@commitlint/cli": "^17.8.0",
-    "@commitlint/config-conventional": "^17.8.0",
-    "@commitlint/types": "^17.4.4",
+    "@boehringer-ingelheim/prettier-config": "^2.0.0",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@commitlint/types": "^19.5.0",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@types/cross-spawn": "^6.0.4",
-    "@types/node": "^20.8.7",
-    "@types/prompts": "^2.4.7",
-    "chokidar": "^3.5.3",
+    "@types/cross-spawn": "^6.0.6",
+    "@types/node": "^22.13.1",
+    "@types/prompts": "^2.4.9",
+    "chokidar": "^4.0.3",
     "chokidar-cli": "^3.0.0",
-    "dotenv-cli": "^7.3.0",
-    "eslint": "^8.51.0",
+    "dotenv-cli": "^8.0.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.0.0",
-    "husky": "^8.0.3",
-    "prettier": "^3.0.3",
-    "semantic-release": "22.0.5",
-    "typescript": "^5.2.2",
-    "unbuild": "^2.0.0"
+    "husky": "^9.1.7",
+    "prettier": "^3.4.2",
+    "semantic-release": "24.2.1",
+    "typescript": "^5.7.3",
+    "unbuild": "^3.3.1"
   },
   "dependencies": {
     "prompts": "^2.4.2"
