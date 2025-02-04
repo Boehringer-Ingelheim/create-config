@@ -42,6 +42,7 @@
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "DEBUG=eslint:cli-engine eslint --fix .",
+    "format": "npm run prettier && npm run lint",
     "prerelease": "npm run build",
     "release": "dotenv -- semantic-release --no-ci",
     "prerelease:ci": "npm run build",

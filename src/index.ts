@@ -56,7 +56,7 @@ async function init() {
         onCancel: () => {
           throw new Error("✖ Operation cancelled");
         },
-      }
+      },
     );
   } catch (err: unknown) {
     if (err instanceof Error) {
