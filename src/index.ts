@@ -47,6 +47,11 @@ async function init() {
           name: "packages",
           type: "multiselect",
         },
+        {
+          message: "Does this look good?",
+          name: "summary",
+          type: "confirm",
+        },
       ],
       {
         onCancel: () => {
