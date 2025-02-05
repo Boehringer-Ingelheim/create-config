@@ -2,7 +2,7 @@ import type { ConfigFile } from "./files.list.types";
 
 export const configFileDict: ConfigFile[] = [
   {
-    formName: "editorconfig",
+    formName: "Editorconfig",
     name: ".editorconfig",
     targetFolder: ".",
   },
@@ -12,12 +12,12 @@ export const configFileDict: ConfigFile[] = [
     targetFolder: ".vscode",
   },
   {
-    formName: "eslintrc.cjs",
-    name: ".eslintrc.cjs",
+    formName: "Eslint config",
+    name: "eslint.config.mjs",
     targetFolder: ".",
   },
   {
-    formName: "prettierrc.cjs",
+    formName: "Prettier config",
     name: ".prettierrc.cjs",
     targetFolder: ".",
   },

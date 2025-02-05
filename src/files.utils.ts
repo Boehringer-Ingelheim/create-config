@@ -9,14 +9,14 @@ import type { ConfigFile, ConfigPackage } from "./files.list.types";
 export function copyFile(filesLocation: string, file: ConfigFile, location: string) {
   const from = `${filesLocation}/${FILE_PREFIX}${file.name}`;
   const toFolder = getTo(location, file.targetFolder);
-  const fileName = file.name.replace(FILE_PREFIX, "");  // Remove prefix
-  const to = getTo(location, file.targetFolder, fileName);
+  const to = getTo(location, file.targetFolder, file.name);
 
   try {
     if (!fs.existsSync(toFolder)) {
       fs.mkdirSync(toFolder, { recursive: true });
     }
     fs.copyFileSync(from, to);
+    console.log(`Copied file ${file.name} to ${to}`); // Tell the user what is happening
   } catch (err) {
     console.warn(err);
   }
@@ -28,20 +28,18 @@ export function doesFileExist(file: ConfigFile, location: string) {
 }
 
 export function installSharedPackages(packageManager: string, packages: ConfigPackage[]) {
-  console.log("Installing your packages now ...");
+  console.log(`Detected "${packageManager}" as your package manager`);
 
   switch (packageManager) {
     case "npm":
-      console.log(`Installing packages with npm`);
       installPackage("npm install", packages, "-D");
       break;
     case "yarn":
-      console.log(`Installing packages with yarn`);
       installPackage("yarn add", packages, "-D");
       break;
 
     default:
-      console.log(`We are sorry, but your package manager "${packageManager}" is not (yet) supported.`);
+      console.log(`Sorry, your package manager "${packageManager}" is not (yet) supported. Please reach out if you think this is a mistake.`);
       break;
   }
 }
@@ -71,13 +69,15 @@ function bulkifyPackages(packages: ConfigPackage[]): string {
 }
 
 function getTo(targetRootPath: string, targetFolder: string, fileName?: string) {
-  const folder = `${targetRootPath}/${targetFolder}`;
+  const folder = targetFolder === "." ? targetRootPath : `${targetRootPath}/${targetFolder}`;
   const file = fileName ? `/${fileName}` : "";
   return folder + file;
 }
 
 function installPackage(baseCmd: string, packs: ConfigPackage[], suffix: string) {
   const toInstall = bulkifyPackages(packs);
+
+  console.log(`Installing packages "${toInstall}" now ... please wait`);
 
   // Install all packages at once
   const cmd = `${baseCmd} ${toInstall} ${suffix}`;
