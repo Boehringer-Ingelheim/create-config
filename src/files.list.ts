@@ -22,3 +22,6 @@ export const configFileDict: ConfigFile[] = [
     targetFolder: ".",
   },
 ];
+
+// Using a prefix to avoid conflicts with other files
+export const FILE_PREFIX = "__"

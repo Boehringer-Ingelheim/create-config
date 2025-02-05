@@ -3,12 +3,14 @@
 import { exec } from "node:child_process";
 import fs from "node:fs";
 
+import { FILE_PREFIX } from "./files.list";
 import type { ConfigFile, ConfigPackage } from "./files.list.types";
 
 export function copyFile(filesLocation: string, file: ConfigFile, location: string) {
-  const from = `${filesLocation}/${file.name}`;
+  const from = `${filesLocation}/${FILE_PREFIX}${file.name}`;
   const toFolder = getTo(location, file.targetFolder);
-  const to = getTo(location, file.targetFolder, file.name);
+  const fileName = file.name.replace(FILE_PREFIX, "");  // Remove prefix
+  const to = getTo(location, file.targetFolder, fileName);
 
   try {
     if (!fs.existsSync(toFolder)) {
@@ -45,7 +47,7 @@ export function installSharedPackages(packageManager: string, packages: ConfigPa
 }
 
 export function pkgFromUserAgent(userAgent: string | undefined) {
-  if (!userAgent) {return undefined;}
+  if (!userAgent) { return undefined; }
 
   const pkgSpec = userAgent.split(" ")[0];
   const pkgSpecArr = pkgSpec.split("/");
