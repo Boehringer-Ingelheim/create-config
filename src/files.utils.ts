@@ -3,26 +3,7 @@
 import { exec } from "node:child_process";
 import fs from "node:fs";
 
-import { ConfigFile, ConfigPackage } from "./files.list.types";
-
-export function welcomeUser() {
-  console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
-}
-
-export function sayGoodbye() {
-  console.log("\nThank you for using shared configuration files of Boehringer Ingelheim!\n");
-}
-
-function getTo(targetRootPath: string, targetFolder: string, fileName?: string) {
-  const folder = `${targetRootPath}/${targetFolder}`;
-  const file = fileName ? `/${fileName}` : "";
-  return folder + file;
-}
-
-export function doesFileExist(file: ConfigFile, location: string) {
-  const to = getTo(location, file.targetFolder, file.name);
-  return fs.existsSync(to);
-}
+import type { ConfigFile, ConfigPackage } from "./files.list.types";
 
 export function copyFile(filesLocation: string, file: ConfigFile, location: string) {
   const from = `${filesLocation}/${file.name}`;
@@ -39,39 +20,9 @@ export function copyFile(filesLocation: string, file: ConfigFile, location: stri
   }
 }
 
-export function pkgFromUserAgent(userAgent: string | undefined) {
-  if (!userAgent) return undefined;
-
-  const pkgSpec = userAgent.split(" ")[0];
-  const pkgSpecArr = pkgSpec.split("/");
-
-  return {
-    name: pkgSpecArr[0],
-    version: pkgSpecArr[1],
-  };
-}
-
-function installPackage(baseCmd: string, packs: ConfigPackage[], suffix: string) {
-  const toInstall = bulkifyPackages(packs);
-
-  // Install all packages at once
-  const cmd = `${baseCmd} ${toInstall} ${suffix}`;
-
-  console.log(`Running command: ${cmd}`);
-
-  exec(cmd, (err, stdout, stderr) => {
-    if (err) {
-      console.warn(err.message);
-    }
-    if (stderr) {
-      console.warn(stderr);
-    }
-    console.log(stdout);
-  });
-}
-
-function bulkifyPackages(packages: ConfigPackage[]): string {
-  return packages.map((p) => p.packages.join(" ")).join(" ");
+export function doesFileExist(file: ConfigFile, location: string) {
+  const to = getTo(location, file.targetFolder, file.name);
+  return fs.existsSync(to);
 }
 
 export function installSharedPackages(packageManager: string, packages: ConfigPackage[]) {
@@ -91,4 +42,53 @@ export function installSharedPackages(packageManager: string, packages: ConfigPa
       console.log(`We are sorry, but your package manager "${packageManager}" is not (yet) supported.`);
       break;
   }
+}
+
+export function pkgFromUserAgent(userAgent: string | undefined) {
+  if (!userAgent) {return undefined;}
+
+  const pkgSpec = userAgent.split(" ")[0];
+  const pkgSpecArr = pkgSpec.split("/");
+
+  return {
+    name: pkgSpecArr[0],
+    version: pkgSpecArr[1],
+  };
+}
+
+export function sayGoodbye() {
+  console.log("\nThank you for using shared configuration files of Boehringer Ingelheim!\n");
+}
+
+export function welcomeUser() {
+  console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
+}
+
+function bulkifyPackages(packages: ConfigPackage[]): string {
+  return packages.map((p) => p.packages.join(" ")).join(" ");
+}
+
+function getTo(targetRootPath: string, targetFolder: string, fileName?: string) {
+  const folder = `${targetRootPath}/${targetFolder}`;
+  const file = fileName ? `/${fileName}` : "";
+  return folder + file;
+}
+
+function installPackage(baseCmd: string, packs: ConfigPackage[], suffix: string) {
+  const toInstall = bulkifyPackages(packs);
+
+  // Install all packages at once
+  const cmd = `${baseCmd} ${toInstall} ${suffix}`;
+
+  console.log(`Running command: ${cmd}`);
+
+  exec(cmd, (err, stdout, stderr) => {
+    if (err) {
+      console.warn(err.message);
+    }
+    if (stderr) {
+      console.warn(stderr);
+    }
+    console.log(stdout);
+  });
 }

@@ -1,4 +1,4 @@
-import { ConfigFile } from "./files.list.types";
+import type { ConfigFile } from "./files.list.types";
 
 export const configFileDict: ConfigFile[] = [
   {

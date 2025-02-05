@@ -50,10 +50,10 @@
     "prepare": "husky"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@boehringer-ingelheim/eslint-config": "^1.1.4",
+    "@boehringer-ingelheim/eslint-config": "^7.1.0",
     "@boehringer-ingelheim/prettier-config": "^2.0.0",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
@@ -66,8 +66,8 @@
     "chokidar": "^4.0.3",
     "chokidar-cli": "^3.0.0",
     "dotenv-cli": "^8.0.0",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
     "husky": "^9.1.7",
     "prettier": "^3.4.2",
     "semantic-release": "24.2.1",

@@ -4,19 +4,20 @@ export interface ConfigFile {
   targetFolder: string;
 }
 
-const answers = ["files", "location", "overwrite", "packages"];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- used only as a type
+const answers = ["files", "location", "overwrite", "packages"] as const;
 
 export type AnswersType = (typeof answers)[number];
-
-// TODO: Link answers and expected result
-export interface ExpectedResult {
-  overwrite: boolean;
-  files: ConfigFile[];
-  location: string;
-  packages: ConfigPackage[];
-}
 
 export interface ConfigPackage {
   formName: string;
   packages: string[];
+}
+
+// TODO: Link answers and expected result
+export interface ExpectedResult {
+  files: ConfigFile[];
+  location: string;
+  overwrite: boolean;
+  packages: ConfigPackage[];
 }
