@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.0.2...v1.1.0) (2025-02-06)
+
+
+### Features
+
+* add summary step ([5967356](https://github.com/boehringer-ingelheim/create-config/commit/59673560bb9b96804f468a2428087e0478d4df84))
+* **deps:** upgrade eslint to use flat config ([a206bc3](https://github.com/boehringer-ingelheim/create-config/commit/a206bc364d7a20d254e05231f6931ca1ca305fd7))
+
 ## [1.0.2](https://github.com/boehringer-ingelheim/create-config/compare/v1.0.1...v1.0.2) (2023-09-01)
 
 
