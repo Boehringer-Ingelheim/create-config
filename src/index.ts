@@ -1,12 +1,8 @@
-/* eslint-disable import/no-unused-modules */
-/* eslint-disable no-console */
-
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-// eslint-disable-next-line import/no-named-as-default
 import prompts from "prompts";
 import { configFileDict } from "./files.list";
-import { AnswersType, ConfigFile, ConfigPackage, ExpectedResult } from "./files.list.types";
+import type { AnswersType, ConfigFile, ConfigPackage, ExpectedResult } from "./files.list.types";
 import {
   copyFile,
   doesFileExist,
@@ -51,12 +47,17 @@ async function init() {
           name: "packages",
           type: "multiselect",
         },
+        {
+          message: "Does this look good?",
+          name: "summary",
+          type: "confirm",
+        },
       ],
       {
         onCancel: () => {
           throw new Error("✖ Operation cancelled");
         },
-      }
+      },
     );
   } catch (err: unknown) {
     if (err instanceof Error) {
@@ -68,7 +69,7 @@ async function init() {
   }
 
   // Destructure results of prompts
-  const { overwrite, files, location, packages } = result as ExpectedResult;
+  const { files, location, overwrite, packages } = result as ExpectedResult;
 
   const filesChosen = files.length > 0;
   const packagesChosen = packages.length > 0;
@@ -118,4 +119,4 @@ function processPackages(packages: ConfigPackage[]) {
   installSharedPackages(pkgManager, packages);
 }
 
-init().catch((e) => console.error(e));
+init().catch((e: unknown) => { console.error(e); });
