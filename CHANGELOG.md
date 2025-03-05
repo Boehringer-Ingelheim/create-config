@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.1.0...v1.2.0) (2025-03-05)
+
+
+### Features
+
+* add dependabot.yml ([d5b2e7b](https://github.com/boehringer-ingelheim/create-config/commit/d5b2e7b2a0bf212d38b6642add38db6a8a19c778))
+
 # [1.1.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.0.2...v1.1.0) (2025-02-06)
 
 
