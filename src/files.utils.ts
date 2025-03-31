@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 
-import { exec } from "node:child_process";
-import fs from "node:fs";
+import { exec } from 'node:child_process';
+import fs from 'node:fs';
 
-import { FILE_PREFIX } from "./files.list";
-import type { ConfigFile, ConfigPackage } from "./files.list.types";
+import { FILE_PREFIX } from './files.list';
+import type { ConfigFile, ConfigPackage } from './files.list.types';
 
 export function copyFile(filesLocation: string, file: ConfigFile, location: string) {
   const from = `${filesLocation}/${FILE_PREFIX}${file.name}`;
@@ -31,24 +31,28 @@ export function installSharedPackages(packageManager: string, packages: ConfigPa
   console.log(`Detected "${packageManager}" as your package manager`);
 
   switch (packageManager) {
-    case "npm":
-      installPackage("npm install", packages, "-D");
+    case 'npm':
+      installPackage('npm install', packages, '-D');
       break;
-    case "yarn":
-      installPackage("yarn add", packages, "-D");
+    case 'yarn':
+      installPackage('yarn add', packages, '-D');
       break;
 
     default:
-      console.log(`Sorry, your package manager "${packageManager}" is not (yet) supported. Please reach out if you think this is a mistake.`);
+      console.log(
+        `Sorry, your package manager "${packageManager}" is not (yet) supported. Please reach out if you think this is a mistake.`,
+      );
       break;
   }
 }
 
 export function pkgFromUserAgent(userAgent: string | undefined) {
-  if (!userAgent) { return undefined; }
+  if (!userAgent) {
+    return undefined;
+  }
 
-  const pkgSpec = userAgent.split(" ")[0];
-  const pkgSpecArr = pkgSpec.split("/");
+  const pkgSpec = userAgent.split(' ')[0];
+  const pkgSpecArr = pkgSpec.split('/');
 
   return {
     name: pkgSpecArr[0],
@@ -57,20 +61,20 @@ export function pkgFromUserAgent(userAgent: string | undefined) {
 }
 
 export function sayGoodbye() {
-  console.log("\nThank you for using shared configuration files of Boehringer Ingelheim!\n");
+  console.log('\nThank you for using shared configuration files of Boehringer Ingelheim!\n');
 }
 
 export function welcomeUser() {
-  console.log("\nWelcome to shared configuration files of Boehringer Ingelheim!\n");
+  console.log('\nWelcome to shared configuration files of Boehringer Ingelheim!\n');
 }
 
 function bulkifyPackages(packages: ConfigPackage[]): string {
-  return packages.map((p) => p.packages.join(" ")).join(" ");
+  return packages.map((p) => p.packages.join(' ')).join(' ');
 }
 
 function getTo(targetRootPath: string, targetFolder: string, fileName?: string) {
-  const folder = targetFolder === "." ? targetRootPath : `${targetRootPath}/${targetFolder}`;
-  const file = fileName ? `/${fileName}` : "";
+  const folder = targetFolder === '.' ? targetRootPath : `${targetRootPath}/${targetFolder}`;
+  const file = fileName ? `/${fileName}` : '';
   return folder + file;
 }
 

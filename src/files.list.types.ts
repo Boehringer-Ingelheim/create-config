@@ -5,7 +5,7 @@ export interface ConfigFile {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- used only as a type
-const answers = ["files", "location", "overwrite", "packages"] as const;
+const answers = ['files', 'location', 'overwrite', 'packages'] as const;
 
 export type AnswersType = (typeof answers)[number];
 
