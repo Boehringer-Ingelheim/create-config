@@ -1,8 +1,8 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import prompts from "prompts";
-import { configFileDict } from "./files.list";
-import type { AnswersType, ConfigFile, ConfigPackage, ExpectedResult } from "./files.list.types";
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import prompts from 'prompts';
+import { configFileDict } from './files.list';
+import type { AnswersType, ConfigFile, ConfigPackage, ExpectedResult } from './files.list.types';
 import {
   copyFile,
   doesFileExist,
@@ -10,8 +10,8 @@ import {
   pkgFromUserAgent,
   sayGoodbye,
   welcomeUser,
-} from "./files.utils";
-import { packageFileDict } from "./packages.list";
+} from './files.utils';
+import { packageFileDict } from './packages.list';
 
 const cwd = process.cwd();
 
@@ -26,36 +26,36 @@ async function init() {
       [
         {
           choices: configFileDict.map((f) => ({ title: f.formName, value: f })),
-          message: "Choose config files",
-          name: "files",
-          type: "multiselect",
+          message: 'Choose config files',
+          name: 'files',
+          type: 'multiselect',
         },
         {
-          initial: ".",
-          message: "Where to put them (filepath)",
-          name: "location",
-          type: (prev: ConfigFile[]) => (prev.length ? "text" : null),
+          initial: '.',
+          message: 'Where to put them (filepath)',
+          name: 'location',
+          type: (prev: ConfigFile[]) => (prev.length ? 'text' : null),
         },
         {
-          message: "Overwrite existing files?",
-          name: "overwrite",
-          type: (prev: string) => (prev.length ? "confirm" : null),
+          message: 'Overwrite existing files?',
+          name: 'overwrite',
+          type: (prev: string) => (prev.length ? 'confirm' : null),
         },
         {
           choices: packageFileDict.map((p) => ({ title: p.formName, value: p })),
-          message: "Choose packages to install",
-          name: "packages",
-          type: "multiselect",
+          message: 'Choose packages to install',
+          name: 'packages',
+          type: 'multiselect',
         },
         {
-          message: "Does this look good?",
-          name: "summary",
-          type: "confirm",
+          message: 'Does this look good?',
+          name: 'summary',
+          type: 'confirm',
         },
       ],
       {
         onCancel: () => {
-          throw new Error("✖ Operation cancelled");
+          throw new Error('✖ Operation cancelled');
         },
       },
     );
@@ -87,7 +87,7 @@ async function init() {
 
 function processFiles(location: string, overwrite: boolean, files: ConfigFile[]) {
   // Get location of create-config and files directory
-  const filesLocation = path.resolve(fileURLToPath(import.meta.url), "../..", "files");
+  const filesLocation = path.resolve(fileURLToPath(import.meta.url), '../..', 'files');
 
   // Get path where create command was called from
   const targetRootPath = path.join(cwd, location);
@@ -112,11 +112,13 @@ function processFiles(location: string, overwrite: boolean, files: ConfigFile[])
 function processPackages(packages: ConfigPackage[]) {
   // Get which package manager
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent);
-  const pkgManager = pkgInfo ? pkgInfo.name : "npm";
+  const pkgManager = pkgInfo ? pkgInfo.name : 'npm';
   // const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.')
 
   // Write files to filesystem
   installSharedPackages(pkgManager, packages);
 }
 
-init().catch((e: unknown) => { console.error(e); });
+init().catch((e: unknown) => {
+  console.error(e);
+});

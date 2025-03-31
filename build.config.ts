@@ -1,4 +1,4 @@
-import { defineBuildConfig } from "unbuild";
+import { defineBuildConfig } from 'unbuild';
 
 // unbuild configuration
 export default defineBuildConfig({
