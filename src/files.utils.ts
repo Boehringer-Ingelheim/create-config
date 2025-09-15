@@ -42,6 +42,8 @@ export function installSharedPackages(packageManager: string, packages: ConfigPa
       console.log(
         `Sorry, your package manager "${packageManager}" is not (yet) supported. Please reach out if you think this is a mistake.`,
       );
+      console.log(`Supported package managers are: npm, yarn`);
+      console.log(`You can still install the packages manually: ${bulkifyPackages(packages)}`);
       break;
   }
 }

@@ -113,7 +113,6 @@ function processPackages(packages: ConfigPackage[]) {
   // Get which package manager
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent);
   const pkgManager = pkgInfo ? pkgInfo.name : 'npm';
-  // const isYarn1 = pkgManager === 'yarn' && pkgInfo?.version.startsWith('1.')
 
   // Write files to filesystem
   installSharedPackages(pkgManager, packages);
