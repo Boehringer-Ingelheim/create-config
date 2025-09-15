@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/boehringer-ingelheim/create-config/compare/v1.3.0...v1.3.1) (2025-09-15)
+
+
+### Bug Fixes
+
+* remove obsolete editorconfig ([305fc98](https://github.com/boehringer-ingelheim/create-config/commit/305fc989705b35ead1ccbe6abcb6898ba0b8867a))
+
 # [1.3.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.2.0...v1.3.0) (2025-09-15)
 
 
