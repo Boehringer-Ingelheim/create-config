@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.2.0...v1.3.0) (2025-09-15)
+
+
+### Features
+
+* add eslint+prettier option ([22a90ff](https://github.com/boehringer-ingelheim/create-config/commit/22a90ff31ad85daecd5871eb3abb7fd46c978cd6))
+* print out packages if package manager not supported ([4f5574b](https://github.com/boehringer-ingelheim/create-config/commit/4f5574b5dfa713b35c21ac0d4a0991324b90c018))
+
 # [1.2.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.1.0...v1.2.0) (2025-03-05)
 
 
