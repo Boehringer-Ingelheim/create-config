@@ -55,7 +55,7 @@
   "devDependencies": {
     "@boehringer-ingelheim/eslint-config": "^8.1.0",
     "@boehringer-ingelheim/prettier-config": "^2.0.0",
-    "@commitlint/cli": "^19.8.1",
+    "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^19.8.1",
     "@commitlint/types": "^19.8.1",
     "@semantic-release/changelog": "6.0.3",
