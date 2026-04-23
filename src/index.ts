@@ -2,7 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import prompts from 'prompts';
 import { configFileDict } from './files.list';
-import type { AnswersType, ConfigFile, ConfigPackage, ExpectedResult } from './files.list.types';
+import type { ConfigFile, ConfigPackage, ExpectedResult } from './files.list.types';
 import {
   copyFile,
   doesFileExist,
@@ -16,7 +16,7 @@ import { packageFileDict } from './packages.list';
 const cwd = process.cwd();
 
 async function init() {
-  let result: prompts.Answers<AnswersType>;
+  let result: ExpectedResult;
 
   welcomeUser();
 
@@ -69,7 +69,7 @@ async function init() {
   }
 
   // Destructure results of prompts
-  const { files, location, overwrite, packages } = result as ExpectedResult;
+  const { files, location, overwrite, packages } = result;
 
   const filesChosen = files.length > 0;
   const packagesChosen = packages.length > 0;
