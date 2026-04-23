@@ -16,6 +16,8 @@ jobs:
     permissions:
       id-token: write # Required for npm OIDC trusted publishing
       contents: write # Required for creating GitHub releases
+      issues: write # Required for @semantic-release/github success comments
+      pull-requests: write # Required for @semantic-release/github success comments
     steps:
       - uses: actions/checkout@v6
         with:
