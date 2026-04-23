@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.3.1...v1.4.0) (2026-04-23)
+
+
+### Bug Fixes
+
+* linting ([b35c9b7](https://github.com/boehringer-ingelheim/create-config/commit/b35c9b716edc18dd7ad78a2f80bfa3cb80f82994))
+
+
+### Features
+
+* **deps:** upgrades and npm trusted publishing ([a80bba5](https://github.com/boehringer-ingelheim/create-config/commit/a80bba5b0049b2ae8030c4ddfa3cc8fb248e8e37))
+
 ## [1.3.1](https://github.com/boehringer-ingelheim/create-config/compare/v1.3.0...v1.3.1) (2025-09-15)
 
 
