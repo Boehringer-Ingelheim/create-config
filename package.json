@@ -39,6 +39,7 @@
     "predev": "unbuild --stub",
     "dev:watch": "chokidar 'src/**/*.ts' -c 'npm run dev --retries=0'",
     "predev:watch": "unbuild --stub",
+    "repair": "npx --yes rimraf@6 node_modules package-lock.json && npm install",
     "build": "unbuild",
     "prettier": "prettier --write --ignore-unknown .",
     "lint": "DEBUG=eslint:cli-engine eslint --fix .",
@@ -71,7 +72,7 @@
     "husky": "^9.1.7",
     "prettier": "^3.8.3",
     "semantic-release": "25.0.3",
-    "typescript": "^6.0.3",
+    "typescript": "^5.9.3",
     "unbuild": "^3.6.1"
   },
   "dependencies": {
