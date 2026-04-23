@@ -1,3 +1,11 @@
+## [1.4.1](https://github.com/Boehringer-Ingelheim/create-config/compare/v1.4.0...v1.4.1) (2026-04-23)
+
+
+### Bug Fixes
+
+* npm run repair ([3bbaa1a](https://github.com/Boehringer-Ingelheim/create-config/commit/3bbaa1a837e30f1ecbfd1dd05d355f2e3cee0156))
+* provenance check ([1df36d7](https://github.com/Boehringer-Ingelheim/create-config/commit/1df36d700b5a105848e9bf8a1d18389d8a355120))
+
 # [1.4.0](https://github.com/boehringer-ingelheim/create-config/compare/v1.3.1...v1.4.0) (2026-04-23)
 
 
