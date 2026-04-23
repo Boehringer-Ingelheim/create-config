@@ -1,3 +1,11 @@
+## [1.4.2](https://github.com/Boehringer-Ingelheim/create-config/compare/v1.4.1...v1.4.2) (2026-04-23)
+
+
+### Bug Fixes
+
+* permissions of job ([1ee0557](https://github.com/Boehringer-Ingelheim/create-config/commit/1ee05577292a22027355352a26d7bf5e13830dad))
+* repo url ([548094f](https://github.com/Boehringer-Ingelheim/create-config/commit/548094f6ce044788908b3ff8a33c31d8be8b14a3))
+
 ## [1.4.1](https://github.com/Boehringer-Ingelheim/create-config/compare/v1.4.0...v1.4.1) (2026-04-23)
 
 
