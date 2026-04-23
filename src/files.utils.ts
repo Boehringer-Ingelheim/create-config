@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 
-import { exec } from 'node:child_process';
+import { execFile } from 'node:child_process';
 import fs from 'node:fs';
-
 import { FILE_PREFIX } from './files.list';
 import type { ConfigFile, ConfigPackage } from './files.list.types';
 
@@ -32,10 +31,10 @@ export function installSharedPackages(packageManager: string, packages: ConfigPa
 
   switch (packageManager) {
     case 'npm':
-      installPackage('npm install', packages, '-D');
+      installPackage('npm', ['install', '-D'], packages);
       break;
     case 'yarn':
-      installPackage('yarn add', packages, '-D');
+      installPackage('yarn', ['add', '-D'], packages);
       break;
 
     default:
@@ -80,17 +79,17 @@ function getTo(targetRootPath: string, targetFolder: string, fileName?: string) 
   return folder + file;
 }
 
-function installPackage(baseCmd: string, packs: ConfigPackage[], suffix: string) {
+function installPackage(cmd: string, args: string[], packs: ConfigPackage[]) {
+  const packageNames = packs.flatMap((p) => p.packages);
+  const allArgs = [...args, ...packageNames];
   const toInstall = bulkifyPackages(packs);
 
   console.log(`Installing packages "${toInstall}" now ... please wait`);
 
   // Install all packages at once
-  const cmd = `${baseCmd} ${toInstall} ${suffix}`;
+  console.log(`Running command: ${[cmd, ...allArgs].join(' ')}`);
 
-  console.log(`Running command: ${cmd}`);
-
-  exec(cmd, (err, stdout, stderr) => {
+  execFile(cmd, allArgs, (err, stdout, stderr) => {
     if (err) {
       console.warn(err.message);
     }

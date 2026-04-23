@@ -14,7 +14,6 @@ export interface ConfigPackage {
   packages: string[];
 }
 
-// TODO: Link answers and expected result
 export interface ExpectedResult {
   files: ConfigFile[];
   location: string;
